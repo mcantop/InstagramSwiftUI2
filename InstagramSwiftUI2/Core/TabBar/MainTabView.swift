@@ -22,8 +22,10 @@ struct MainTabView: View {
             Text("Notifications")
                 .tabItem { Image(systemName: "heart") }
             
-            ProfileView()
-                .tabItem { Image(systemName: "person") }
+            NavigationStack {
+                ProfileView(user: User.MOCK_USERS.first!)
+            }
+            .tabItem { Image(systemName: "person") }
         }
     }
 }

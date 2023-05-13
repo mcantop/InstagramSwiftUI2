@@ -8,79 +8,84 @@
 import SwiftUI
 
 struct ProfileView: View {
+    let user: User
+    
     private let columns = [
         GridItem(spacing: 1), GridItem(spacing: 1), GridItem(spacing: 1)
     ]
-        
+    
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    // Profile Pic And Stats
-                    HStack {
-                        Image("profile_pic")
+        ScrollView {
+            VStack(spacing: 16) {
+                // Profile Pic And Stats
+                HStack {
+                    Image(user.profileImageUrl ?? "")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 88, height: 88)
+                        .clipShape(Circle())
+                    
+                    Spacer(minLength: 0)
+                    
+                    ProfileStats(name: "Posts", amount: 3)
+                    
+                    Spacer(minLength: 0)
+                    
+                    ProfileStats(name: "Followers", amount: 1)
+                    
+                    Spacer(minLength: 0)
+                    
+                    ProfileStats(name: "Following", amount: 2)
+                }
+                .padding(.horizontal)
+                
+                // Profile Name and description
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    if let fullname = user.fullname {
+                        Text(fullname).font(.headline)
+                    }
+                    
+                    if let bio = user.bio {
+                        Text(bio).font(.subheadline)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                
+                Button {
+                    
+                } label: {
+                    Text("Edit Profile")
+                        .padding(12)
+                        .frame(maxWidth: .infinity)
+                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(lineWidth: 1))
+                        .padding(.horizontal)
+                        .tint(.primary)
+                        .bold()
+                }
+                
+                LazyVGrid(columns: columns, spacing: 1) {
+                    ForEach(0..<4, id: \.self) { _ in
+                        Image("post_pic")
                             .resizable()
-                            .frame(width: 88, height: 88)
-                            .clipShape(Circle())
-                        
-                        Spacer(minLength: 0)
-                        
-                        ProfileStats(name: "Posts", amount: 3)
-                        
-                        Spacer(minLength: 0)
-                        
-                        ProfileStats(name: "Followers", amount: 1)
-                        
-                        Spacer(minLength: 0)
-                        
-                        ProfileStats(name: "Following", amount: 2)
+                            .aspectRatio(1.0, contentMode: .fill)
                     }
-                    .padding(.horizontal)
-                    
-                    // Profile Name and description
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("FUTURE HNDRXX").font(.headline)
-                        
-                        Text("I Never Liked You Out Now 🦅").font(.subheadline)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("Edit Profile")
-                            .padding(12)
-                            .frame(maxWidth: .infinity)
-                            .overlay(RoundedRectangle(cornerRadius: 5).stroke(lineWidth: 1))
-                            .padding(.horizontal)
-                            .tint(.primary)
-                            .bold()
-                    }
-
-                    LazyVGrid(columns: columns, spacing: 1) {
-                        ForEach(0..<4, id: \.self) { _ in
-                            Image("post_pic")
-                                .resizable()
-                                .aspectRatio(1.0, contentMode: .fill)
-                        }
-                    }
-                    
-                    Spacer()
                 }
+                
+                Spacer()
             }
-            .navigationTitle("Profile")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "line.3.horizontal")
-                    }
-
+        }
+        .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "line.3.horizontal")
                 }
+                
             }
         }
     }
@@ -88,7 +93,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(user: User.MOCK_USERS.first!)
     }
 }
 

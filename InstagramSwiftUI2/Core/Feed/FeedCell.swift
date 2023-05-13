@@ -10,7 +10,7 @@ import SwiftUI
 struct FeedCell: View {
     var body: some View {
         VStack(spacing: 8) {
-            UserCell()
+            UserCell(User.MOCK_USERS.first!)
             
             Image("post_pic")
                 .resizable()

@@ -15,17 +15,13 @@ struct IGBlueButton: View {
     }
     
     var body: some View {
-        Button {
-            
-        } label: {
             Text(text)
-                .font(.headline)
-                .padding(12)
-                .frame(maxWidth: .infinity)
-                .foregroundStyle(.white)
-                .background(.blue)
-                .cornerRadius(5)
-        }
+            .font(.headline)
+            .padding(12)
+            .frame(maxWidth: .infinity)
+            .foregroundStyle(.white)
+            .background(.blue)
+            .cornerRadius(5)
     }
 }
 

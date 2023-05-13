@@ -18,7 +18,7 @@ struct LoginView: View {
                 
                 IGLogoView(.large).padding(.bottom, -16)
                 
-                VStack(spacing: 4) {
+                VStack(spacing: 8) {
                     IGTextField(
                         placeholder: "Enter your email",
                         text: $email
@@ -33,7 +33,11 @@ struct LoginView: View {
                 
                 ForgotPasswordButton()
                 
-                IGBlueButton("Log in")
+                Button {
+                    
+                } label: {
+                    IGBlueButton("Log in")
+                }
                 
                 ORSeperatorView()
                 
@@ -42,7 +46,7 @@ struct LoginView: View {
                 Spacer(minLength: 0)
                 
                 NavigationLink {
-                    
+                    AddEmailView()
                 } label: {
                     BottomAuthLabel()
                 }
