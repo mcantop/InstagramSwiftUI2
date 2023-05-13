@@ -25,11 +25,7 @@ struct FeedView: View {
                     Button {
                         
                     } label: {
-                        Image("instagram-wide-logo")
-                            .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(.primary)
-                            .frame(width: 100, height: 60)
+                        IGLogoView(.small)
                     }
 
                 }
