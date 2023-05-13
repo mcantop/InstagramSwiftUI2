@@ -10,17 +10,7 @@ import SwiftUI
 struct FeedCell: View {
     var body: some View {
         VStack(spacing: 8) {
-            HStack {
-                Image("profile_pic")
-                    .resizable()
-                    .frame(width: 44, height: 44)
-                    .clipShape(Circle())
-                
-                Text("future").bold()
-                
-                Spacer()
-            }
-            .padding(.horizontal, 8)
+            UserCell()
             
             Image("post_pic")
                 .resizable()
