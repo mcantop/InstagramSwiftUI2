@@ -1,0 +1,35 @@
+//
+//  MainTabView.swift
+//  InstagramSwiftUI2
+//
+//  Created by Maciej on 13/05/2023.
+//
+
+import SwiftUI
+
+struct MainTabView: View {
+    var body: some View {
+        TabView {
+            Text("Feed")
+                .tabItem { Image(systemName: "house") }
+            
+            Text("Search")
+                .tabItem { Image(systemName: "magnifyingglass") }
+            
+            Text("Upload")
+                .tabItem { Image(systemName: "plus.square") }
+            
+            Text("Notifications")
+                .tabItem { Image(systemName: "heart") }
+            
+            ProfileView()
+                .tabItem { Image(systemName: "person") }
+        }
+    }
+}
+
+struct MainTabView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainTabView()
+    }
+}
