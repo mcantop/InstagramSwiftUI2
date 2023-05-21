@@ -33,10 +33,8 @@ struct LoginView: View {
                 
                 ForgotPasswordButton()
                 
-                Button {
-                    
-                } label: {
-                    IGBlueButton("Log in")
+                IGWideButton("Log in", style: .blue) {
+                    print("[DEBUG] Handle Log in here..")
                 }
                 
                 ORSeperatorView()

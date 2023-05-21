@@ -30,11 +30,11 @@ struct CreatePasswordView: View {
                 isSecured: true
             )
             
-            NavigationLink {
-                CompleteRegistrationView()
-            } label: {
-                IGBlueButton("Next")
-            }
+            IGWideButton(
+                "Next",
+                style: .blue,
+                destination: AnyView(CompleteRegistrationView())
+            )
             
             Spacer()
         }

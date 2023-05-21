@@ -23,11 +23,7 @@ struct CompleteRegistrationView: View {
             }
             .multilineTextAlignment(.center)
                         
-            Button {
-                
-            } label: {
-                IGBlueButton("Let's get it!")
-            }
+            IGWideButton("Let's get it!", style: .blue) { }
             
             Spacer()
         }

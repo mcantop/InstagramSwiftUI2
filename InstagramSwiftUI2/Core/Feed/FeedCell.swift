@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct FeedCell: View {
+    let post: Post
+    
     var body: some View {
         VStack(spacing: 8) {
-            UserCell(User.MOCK_USERS.first!)
+            UserCell(post.user!)
             
-            Image("post_pic")
+            Image(post.imageUrl)
                 .resizable()
                 .frame(maxWidth: .infinity)
                 .scaledToFit()
@@ -26,11 +28,11 @@ struct FeedCell: View {
                     Spacer(minLength: 0)
                 }
                 
-                Text("0 likes").bold()
+                Text(post.likes.toString() + " likes").bold()
                 
-                Text("future").bold() + Text(" ") + Text("Winning without u.")
+                Text(post.user?.username ?? "username").bold() + Text(" ") + Text(post.caption)
                 
-                Text("6h")
+                Text(post.timestamp.formatted())
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -41,7 +43,7 @@ struct FeedCell: View {
 
 struct FeedCell_Previews: PreviewProvider {
     static var previews: some View {
-        FeedCell()
+        FeedCell(post: .MOCK_POSTS.first!)
     }
 }
 

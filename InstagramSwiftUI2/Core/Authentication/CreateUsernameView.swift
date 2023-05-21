@@ -26,11 +26,11 @@ struct CreateUsernameView: View {
             
             IGTextField(placeholder: "Username", text: $username)
             
-            NavigationLink {
-                CreatePasswordView()
-            } label: {
-                IGBlueButton("Next")
-            }
+            IGWideButton(
+                "Next",
+                style: .blue,
+                destination: AnyView(CreatePasswordView())
+            )
             
             Spacer()
         }

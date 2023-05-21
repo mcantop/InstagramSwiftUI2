@@ -26,11 +26,11 @@ struct AddEmailView: View {
             
             IGTextField(placeholder: "Email", text: $email)
             
-            NavigationLink {
-                CreateUsernameView()
-            } label: {
-                IGBlueButton("Next")
-            }
+            IGWideButton(
+                "Next",
+                style: .blue,
+                destination: AnyView(CreateUsernameView())
+            )
             
             Spacer()
         }
@@ -43,7 +43,7 @@ struct AddEmailView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
-
+                
             }
         }
     }
