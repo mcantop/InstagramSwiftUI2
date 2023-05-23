@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct InstagramSwiftUI2App: App {
+    @StateObject private var appManager = AppManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appManager)
         }
     }
 }

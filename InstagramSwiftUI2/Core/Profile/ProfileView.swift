@@ -15,30 +15,25 @@ struct ProfileView: View {
     }
         
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                ProfileHeader(user: user)
-                                
-                ProfileSubheader(user: user)
-                                
-                IGWideButton("Edit Profile", style: .blackWhite) { }
-                    .padding(.horizontal)
-                                
-                PostGridView(userPosts)
-                
-                Spacer()
-            }
-        }
-        .navigationTitle("Profile")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
+        VStack {
+            ScrollView {
+                VStack(spacing: 16) {
+                    ProfileHeader(user: user)
+                                    
+                    ProfileSubheader(user: user)
+                                    
+                    IGWideButton("Edit Profile", style: .blackWhite) { }
+                        .padding(.horizontal)
+                                    
+                    PostGridView(userPosts)
+                    PostGridView(userPosts)
+
+                    PostGridView(userPosts)
+                    PostGridView(userPosts)
+
                     
-                } label: {
-                    Image(systemName: "line.3.horizontal")
+                    Spacer()
                 }
-                
             }
         }
     }
