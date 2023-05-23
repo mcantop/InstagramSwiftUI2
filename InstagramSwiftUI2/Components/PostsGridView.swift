@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-struct PostGridView: View {
+struct PostsGridView: View {
     let posts: [Post]
     private let columns = [GridItem(spacing: 1), GridItem(spacing: 1), GridItem(spacing: 1)]
     
@@ -35,6 +35,6 @@ struct PostGridView: View {
 
 struct PostGridView_Previews: PreviewProvider {
     static var previews: some View {
-        PostGridView(Post.MOCK_POSTS)
+        PostsGridView(Post.MOCK_POSTS)
     }
 }

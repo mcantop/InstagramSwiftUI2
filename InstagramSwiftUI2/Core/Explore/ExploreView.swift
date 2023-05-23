@@ -17,6 +17,11 @@ struct ExploreView: View {
                 ForEach(User.MOCK_USERS) { user in
                     NavigationLink(value: user) {
                         UserCell(user, showFullName: true)
+                            .onDisappear {
+                                DispatchQueue.main.async {
+                                    appManager.presentingUpload = false
+                                }
+                            }
                     }
                 }
             }

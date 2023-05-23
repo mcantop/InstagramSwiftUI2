@@ -15,6 +15,10 @@ struct IGTabButton: View {
         return appManager.selectedTab == type
     }
     
+    private var isUpload: Bool {
+        return type == .upload
+    }
+    
     private var imageName: String {
         return isSelected ? type.imageNameFilled : type.imageName
     }
@@ -23,17 +27,22 @@ struct IGTabButton: View {
         return isSelected ? .semibold : .regular
     }
     
+    private var foregroundColor: Color {
+        return isSelected || isUpload ? .primary : .secondary
+    }
+    
     var body: some View {
         Button {
-            if type == .upload {
+            if isUpload {
                 appManager.presentingUpload.toggle()
             } else {
                 appManager.selectedTab = type
             }
         } label: {
             Image(systemName: imageName)
-                .frame(width: 44, height: 44)
                 .fontWeight(fontWeight)
+                .foregroundColor(foregroundColor)
+                .frame(width: 44, height: 44)
         }
         .frame(maxWidth: .infinity)
     }

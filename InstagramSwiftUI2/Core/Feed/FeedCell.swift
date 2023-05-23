@@ -14,10 +14,7 @@ struct FeedCell: View {
         VStack(spacing: 8) {
             UserCell(post.user!)
             
-            Image(post.imageUrl)
-                .resizable()
-                .frame(maxWidth: .infinity)
-                .scaledToFit()
+            IGWideImage(post.imageUrl)
             
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 16) {
