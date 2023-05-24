@@ -16,7 +16,7 @@ struct IGWideButton: View {
     // MARK: - Public Properties
     let text: String
     var style: WideButtonStyle
-    var destination: AnyView?
+    var destination: (any View)?
     let action: (() -> Void)?
     
     // MARK: - Computed Properties
@@ -33,7 +33,7 @@ struct IGWideButton: View {
     }
     
     // MARK: - Action Init
-    init(_ text: String, style: WideButtonStyle, action: (() -> Void)? = nil) {
+    init(_ text: String, style: WideButtonStyle, action: @escaping (() -> Void)) {
         self.text = text
         self.style = style
         self.destination = nil
@@ -41,10 +41,10 @@ struct IGWideButton: View {
     }
     
     // MARK: - Destination Init
-    init(_ text: String, style: WideButtonStyle, destination: AnyView? = nil) {
+    init(_ text: String, style: WideButtonStyle, destination: any View) {
         self.text = text
         self.style = style
-        self.destination = AnyView(destination)
+        self.destination = destination
         self.action = nil
     }
     
@@ -55,7 +55,7 @@ struct IGWideButton: View {
                     buttonLabel
                 }
             } else if let destination {
-                NavigationLink(destination: destination) {
+                NavigationLink(destination: AnyView(destination)) {
                     buttonLabel
                 }
             }

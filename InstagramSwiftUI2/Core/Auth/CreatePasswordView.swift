@@ -33,7 +33,7 @@ struct CreatePasswordView: View {
             IGWideButton(
                 "Next",
                 style: .blue,
-                destination: AnyView(CompleteRegistrationView())
+                destination: CompleteRegistrationView()
             )
             
             Spacer()

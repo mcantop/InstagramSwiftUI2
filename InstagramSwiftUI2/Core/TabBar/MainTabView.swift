@@ -9,14 +9,14 @@ import SwiftUI
 
 struct MainTabView: View {
     @EnvironmentObject var appManager: AppManager
-//    @State private var path = NavigationPath()
+    @State private var path = NavigationPath()
     
     private var navigationTitle: String {
         return appManager.selectedTab.rawValue.capitalized
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ZStack(alignment: .bottom) {
                 SelectedTabView()
                 
