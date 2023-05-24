@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct SigninView: View {
     @State private var email = ""
     @State private var password = ""
     
@@ -20,7 +20,7 @@ struct LoginView: View {
                 
                 VStack(spacing: 8) {
                     IGTextField(
-                        placeholder: "Enter your email",
+                        placeholder: "Email",
                         text: $email
                     )
                     
@@ -33,8 +33,8 @@ struct LoginView: View {
                 
                 ForgotPasswordButton()
                 
-                IGWideButton("Log in", style: .blue) {
-                    print("[DEBUG] Handle Log in here..")
+                IGWideButton("Sign In", style: .blue) {
+                    print("[DEBUG] Handle Sign in here..")
                 }
                 
                 ORSeperatorView()
@@ -44,7 +44,7 @@ struct LoginView: View {
                 Spacer(minLength: 0)
                 
                 NavigationLink {
-                    AddEmailView()
+                    SignupEmailView()
                 } label: {
                     BottomAuthLabel()
                 }
@@ -56,7 +56,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        SigninView()
     }
 }
 
@@ -85,6 +85,7 @@ private struct ORSeperatorView: View {
     }
 }
 
+// MARK: - FacebookContinueButton
 private struct FacebookContinueButton: View {
     var body: some View {
         Button {
@@ -105,6 +106,7 @@ private struct FacebookContinueButton: View {
     }
 }
 
+// MARK: - ForgotPasswordButton
 private struct ForgotPasswordButton: View {
     var body: some View {
         Button {
@@ -117,5 +119,19 @@ private struct ForgotPasswordButton: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(.horizontal)
+    }
+}
+
+// MARK: - BottomAuthLabel
+private struct BottomAuthLabel: View {
+    var body: some View {
+        HStack(spacing: 4) {
+            Text("Don't have an account?")
+            
+            Text("Sign up")
+                .bold()
+        }
+        .font(.footnote)
+        .foregroundColor(.blue)
     }
 }

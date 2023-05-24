@@ -22,19 +22,24 @@ final class AuthManager: ObservableObject {
 
 // MARK: - Public Helpers
 extension AuthManager {
-    func login(email: String, password: String) async throws {
+    func signin(email: String, password: String) async throws {
         
     }
     
-    func register(username: String, email: String, password: String) async throws {
-        
+    func signup(email: String, username: String, password: String) async throws {
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            userSession = result.user
+        } catch {
+            print("[DEBUG] Failed to register user with error - \(error)")
+        }
     }
     
     func loadUserdata() async throws {
         
     }
     
-    func logout() {
+    func signout() {
         
     }
 }

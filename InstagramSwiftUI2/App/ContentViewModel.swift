@@ -9,14 +9,13 @@ import Foundation
 import FirebaseAuth
 import Combine
 
+@MainActor
 final class ContentViewModel: ObservableObject {
-    // MARK: - Properties
     @Published var userSession: FirebaseAuth.User?
 
     private let authManager = AuthManager.shared
     private var cancellables = Set<AnyCancellable>()
     
-    // MARK: - Init
     init() {
         setupSubscribers()
     }

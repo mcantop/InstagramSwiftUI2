@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct CompleteRegistrationView: View {
+struct SignupCompleteView: View {
+    @EnvironmentObject var viewModel: RegistrationFlowViewModel
+    
     var body: some View {
         VStack(spacing: 24) {
             Spacer()
             
             VStack(spacing: 12) {
-                Text("Welcome to Instagram, future")
+                Text("Welcome to Instagram, \(viewModel.username)")
                     .font(.title2)
                     .fontWeight(.bold)
                 
@@ -23,17 +25,21 @@ struct CompleteRegistrationView: View {
             }
             .multilineTextAlignment(.center)
                         
-            IGWideButton("Let's get it!", style: .blue) { }
+            IGWideButton(
+                "Create Account",
+                style: .blue
+            ) {
+                Task { try await viewModel.signup() }
+            }
             
             Spacer()
         }
         .padding(.horizontal)
-        .navigationBarBackButtonHidden()
     }
 }
 
 struct CompleteRegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteRegistrationView()
+        SignupCompleteView()
     }
 }

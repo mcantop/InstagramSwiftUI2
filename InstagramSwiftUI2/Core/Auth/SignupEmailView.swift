@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct AddEmailView: View {
+struct SignupEmailView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var email = ""
+    @EnvironmentObject var viewModel: RegistrationFlowViewModel
     
     var body: some View {
         VStack(spacing: 24) {
@@ -24,12 +24,15 @@ struct AddEmailView: View {
                     .multilineTextAlignment(.center)
             }
             
-            IGTextField(placeholder: "Email", text: $email)
+            IGTextField(
+                placeholder: "Email",
+                text: $viewModel.email
+            )
             
             IGWideButton(
                 "Next",
                 style: .blue,
-                destination: CreateUsernameView()
+                destination: SignupUsernameView()
             )
             
             Spacer()
@@ -52,7 +55,8 @@ struct AddEmailView: View {
 struct AddEmailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AddEmailView()
+            SignupEmailView()
+                .environmentObject(RegistrationFlowViewModel())
         }
     }
 }
