@@ -41,6 +41,7 @@
 		528806F12A1C53A5006C3524 /* UploadPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528806F02A1C53A5006C3524 /* UploadPostViewModel.swift */; };
 		5291BD7A2A1DA0D3007976C1 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291BD792A1DA0D3007976C1 /* ContentViewModel.swift */; };
 		5291BD7C2A1DA5A7007976C1 /* RegistrationFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291BD7B2A1DA5A7007976C1 /* RegistrationFlowViewModel.swift */; };
+		5291BD7E2A1DAF69007976C1 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291BD7D2A1DAF69007976C1 /* SigninViewModel.swift */; };
 		52D911C32A1D2B5E00172368 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D911C22A1D2B5E00172368 /* ProfileHeader.swift */; };
 		52D911C52A1D2B7300172368 /* ProfileSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D911C42A1D2B7300172368 /* ProfileSubheader.swift */; };
 		52D911C92A1D374300172368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D911C82A1D374300172368 /* GoogleService-Info.plist */; };
@@ -87,6 +88,7 @@
 		528806F02A1C53A5006C3524 /* UploadPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewModel.swift; sourceTree = "<group>"; };
 		5291BD792A1DA0D3007976C1 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		5291BD7B2A1DA5A7007976C1 /* RegistrationFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFlowViewModel.swift; sourceTree = "<group>"; };
+		5291BD7D2A1DAF69007976C1 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		52D911C22A1D2B5E00172368 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		52D911C42A1D2B7300172368 /* ProfileSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSubheader.swift; sourceTree = "<group>"; };
 		52D911C82A1D374300172368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				5262987B2A0F36B50078E3DA /* SigninView.swift */,
+				5291BD7D2A1DAF69007976C1 /* SigninViewModel.swift */,
 				526298852A0F42410078E3DA /* SignupEmailView.swift */,
 				526298872A0F486B0078E3DA /* SignupUsernameView.swift */,
 				526298892A0F4A390078E3DA /* SignupPasswordView.swift */,
@@ -373,6 +376,7 @@
 				52D911C32A1D2B5E00172368 /* ProfileHeader.swift in Sources */,
 				5262988D2A0F4AE40078E3DA /* SignupCompleteView.swift in Sources */,
 				526298862A0F42410078E3DA /* SignupEmailView.swift in Sources */,
+				5291BD7E2A1DAF69007976C1 /* SigninViewModel.swift in Sources */,
 				521D6D9F2A1A68D400365746 /* Int+Extension.swift in Sources */,
 				526298702A0F21B10078E3DA /* ProfileView.swift in Sources */,
 				5262988A2A0F4A390078E3DA /* SignupPasswordView.swift in Sources */,

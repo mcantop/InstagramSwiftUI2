@@ -22,16 +22,23 @@ final class AuthManager: ObservableObject {
 
 // MARK: - Public Helpers
 extension AuthManager {
+    @MainActor
     func signin(email: String, password: String) async throws {
-        
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            userSession = result.user
+        } catch {
+            print("[DEBUG] Failed to sign in user with error - \(error.localizedDescription)")
+        }
     }
     
+    @MainActor
     func signup(email: String, username: String, password: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             userSession = result.user
         } catch {
-            print("[DEBUG] Failed to register user with error - \(error)")
+            print("[DEBUG] Failed to sign up user with error - \(error.localizedDescription)")
         }
     }
     
@@ -40,6 +47,7 @@ extension AuthManager {
     }
     
     func signout() {
-        
+        try? Auth.auth().signOut()
+        userSession = nil
     }
 }

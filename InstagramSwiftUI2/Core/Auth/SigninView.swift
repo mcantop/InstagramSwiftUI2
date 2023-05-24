@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SigninView: View {
-    @State private var email = ""
-    @State private var password = ""
+    @StateObject private var viewModel = SigninViewModel()
     
     var body: some View {
         NavigationStack {
@@ -21,12 +20,12 @@ struct SigninView: View {
                 VStack(spacing: 8) {
                     IGTextField(
                         placeholder: "Email",
-                        text: $email
+                        text: $viewModel.email
                     )
                     
                     IGTextField(
                         placeholder: "Password",
-                        text: $password,
+                        text: $viewModel.password,
                         isSecured: true
                     )
                 }
@@ -34,7 +33,7 @@ struct SigninView: View {
                 ForgotPasswordButton()
                 
                 IGWideButton("Sign In", style: .blue) {
-                    print("[DEBUG] Handle Sign in here..")
+                    Task { try await viewModel.signin() }
                 }
                 
                 ORSeperatorView()

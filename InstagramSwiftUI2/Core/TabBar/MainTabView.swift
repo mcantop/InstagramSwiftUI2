@@ -41,7 +41,9 @@ struct MainTabView: View {
                     if isSelected(.feed) {
                         ImageButton("paperplane") { }
                     } else if isSelected(.profile) {
-                        ImageButton("line.3.horizontal") { }
+                        ImageButton("line.3.horizontal") {
+                            AuthManager.shared.signout()
+                        }
                     }
                 }
             }
