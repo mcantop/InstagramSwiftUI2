@@ -9,19 +9,15 @@ import SwiftUI
 
 struct ExploreView: View {
     @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var viewModel: ExploreViewModel
     @State private var searchQuery = ""
     
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(User.MOCK_USERS) { user in
+                ForEach(viewModel.users) { user in
                     NavigationLink(value: user) {
                         UserCell(user, showFullName: true)
-                            .onDisappear {
-                                DispatchQueue.main.async {
-                                    appManager.presentingUpload = false
-                                }
-                            }
                     }
                 }
             }

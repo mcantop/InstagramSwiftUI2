@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @EnvironmentObject var appManager: AppManager
+    @StateObject private var exploreViewModel = ExploreViewModel() /// Why is creating a stateobject inside navigationstack causing a double init of the state object?
     @State private var path = NavigationPath()
     let user: User
     
@@ -20,6 +21,7 @@ struct MainTabView: View {
         NavigationStack(path: $path) {
             ZStack(alignment: .bottom) {
                 SelectedTabView()
+                    .environmentObject(exploreViewModel)
                 
                 IGTabBar()
             }
