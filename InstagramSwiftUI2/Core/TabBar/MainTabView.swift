@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     @EnvironmentObject var appManager: AppManager
     @State private var path = NavigationPath()
+    let user: User
     
     private var navigationTitle: String {
         return appManager.selectedTab.rawValue.capitalized
@@ -53,7 +54,7 @@ struct MainTabView: View {
     @ViewBuilder
     private func SelectedTabView() -> some View {
         ForEach(TabType.allCases) { type in
-            AnyView(type.view)
+            AnyView(type.view(user: user))
                 .opacity(isSelected(type) ? 1 : 0)
         }
     }
@@ -66,7 +67,7 @@ struct MainTabView: View {
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        MainTabView(user: User.MOCK_USERS.first!)
             .environmentObject(AppManager())
     }
 }

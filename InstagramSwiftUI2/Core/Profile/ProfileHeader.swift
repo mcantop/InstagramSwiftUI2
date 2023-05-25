@@ -12,7 +12,7 @@ struct ProfileHeader: View {
     
     var body: some View {
         HStack {
-            Image(user.profileImageUrl ?? "")
+            Image(user.profileImageUrl ?? "Default_profile_pic")
                 .resizable()
                 .scaledToFill()
                 .frame(width: 88, height: 88)

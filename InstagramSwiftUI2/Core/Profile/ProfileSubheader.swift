@@ -13,12 +13,14 @@ struct ProfileSubheader: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             if let fullname = user.fullname {
-                Text(fullname).font(.headline)
+                Text(user.username).font(.headline)
             }
             
             if let bio = user.bio {
                 Text(bio).font(.subheadline)
             }
+            
+            Text(user.username)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)

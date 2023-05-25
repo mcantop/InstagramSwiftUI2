@@ -37,7 +37,7 @@ enum TabType: String, Identifiable, CaseIterable  {
         return self != .explore ? imageName + ".fill" : imageName
     }
     
-    var view: any View {
+    func view(user: User) -> any View {
         switch self {
         case .feed:
             return FeedView()
@@ -48,7 +48,7 @@ enum TabType: String, Identifiable, CaseIterable  {
         case .notifications:
             return NotificationView()
         case .profile:
-            return ProfileView(user: User.MOCK_USERS.first!)
+            return ProfileView(user: user)
             
         }
     }

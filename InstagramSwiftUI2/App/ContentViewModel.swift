@@ -11,6 +11,7 @@ import Combine
 
 final class ContentViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
 
     private let authManager = AuthManager.shared
     private var cancellables = Set<AnyCancellable>()
@@ -25,6 +26,11 @@ private extension ContentViewModel {
     func setupSubscribers() {
         authManager.$userSession.sink { [weak self] userSession in
             self?.userSession = userSession
+        }
+        .store(in: &cancellables)
+        
+        authManager.$currentUser.sink { [weak self] currentUser in
+            self?.currentUser = currentUser
         }
         .store(in: &cancellables)
     }

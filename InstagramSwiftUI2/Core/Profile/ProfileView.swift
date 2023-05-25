@@ -13,29 +13,28 @@ struct ProfileView: View {
     private var userPosts: [Post] {
         return Post.MOCK_POSTS.filter({ $0.user?.username == user.username })
     }
-        
+    
     var body: some View {
-        VStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    ProfileHeader(user: user)
-                                    
-                    ProfileSubheader(user: user)
-                                    
-                    IGWideButton(
-                        "Edit Profile",
-                        style: .blackWhite
-                    ) {
-                        
-                    }
-                    .padding(.horizontal)
-                                    
-                    PostsGridView(userPosts)
+        ScrollView {
+            VStack(spacing: 16) {
+                ProfileHeader(user: user)
+                
+                ProfileSubheader(user: user)
+                
+                IGWideButton(
+                    "Edit Profile",
+                    style: .blackWhite
+                ) {
                     
-                    Spacer()
                 }
+                .padding(.horizontal)
+                
+                PostsGridView(userPosts)
+                
+                Spacer()
             }
         }
+        .padding(.top)
     }
 }
 

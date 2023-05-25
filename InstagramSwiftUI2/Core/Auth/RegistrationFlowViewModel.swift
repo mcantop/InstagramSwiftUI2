@@ -13,9 +13,19 @@ final class RegistrationFlowViewModel: ObservableObject {
     @Published var password = ""
 }
 
-// MARK: - Public Helpers
+// MARK: - Public API
 extension RegistrationFlowViewModel {
     func signup() async throws {
         try await AuthManager.shared.signup(email: email, username: username, password: password)
+        resetTextFields()
+    }
+}
+
+// MARK: - Private API
+private extension RegistrationFlowViewModel {
+    func resetTextFields() {
+        username = ""
+        email = ""
+        password = ""
     }
 }
