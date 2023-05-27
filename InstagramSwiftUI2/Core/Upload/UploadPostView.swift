@@ -60,7 +60,10 @@ struct UploadPostView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     // MARK: Upload
                     Button("Upload") {
-                        
+                        Task {
+                            try await viewModel.uploadPost()
+                            dismiss()
+                        }
                     }
                     .fontWeight(.semibold)
                     .disabled(viewModel.disallowUpload)

@@ -27,22 +27,23 @@ final class EditProfileViewModel: ObservableObject {
         didSet { Task { await loadImage(fromItem: selectedItem) } }
     }
     
+    private var selectedUIImage: UIImage?
+    
     // MARK: - Computed Properties
     var disallowUpload: Bool {
         // TODO: 
         return selectedImage == nil
     }
-    
+        
     // MARK: - Init
     init(user: User) {
         self.user = user
-        self.fullname = user.fullname ?? ""
         self.username = user.username
+        self.fullname = user.fullname ?? ""
         self.pronouns = user.pronouns ?? ""
         self.bio = user.bio ?? ""
         self.links = user.links ?? ""
         self.gender = user.gender ?? 0
-        print("[DEBUG] Init EditProfileViewModel")
     }
 }
 
@@ -59,10 +60,16 @@ extension EditProfileViewModel {
         }
         
         selectedImage = Image(uiImage: uiImage)
+        selectedUIImage = uiImage
     }
     
     func updateUserData() async throws {
         var data = [String: Any]()
+        
+        if let selectedUIImage {
+            let imageUrl = try? await ImageUploader.uploadImage(selectedUIImage, type: .profile)
+            data["profileImageUrl"] = imageUrl
+        }
         
         if !username.isEmpty && user.username != username {
             user.username = username

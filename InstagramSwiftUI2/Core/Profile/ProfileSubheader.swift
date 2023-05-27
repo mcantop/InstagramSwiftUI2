@@ -31,7 +31,7 @@ struct ProfileSubheader: View {
             }
             
             if let links = user.links {
-                HStack {
+                HStack(spacing: 4) {
                     Image(systemName: "link")
                     
                     Link(links, destination: URL(string: links)!)

@@ -12,7 +12,9 @@ struct FeedCell: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            UserCell(post.user!)
+            if let user = post.user {
+                UserCell(user)
+            }
             
             IGWideImage(post.imageUrl)
             
@@ -29,7 +31,7 @@ struct FeedCell: View {
                 
                 Text(post.user?.username ?? "username").bold() + Text(" ") + Text(post.caption)
                 
-                Text(post.timestamp.formatted())
+                Text(post.date.formatted())
                     .font(.caption)
                     .foregroundColor(.secondary)
             }

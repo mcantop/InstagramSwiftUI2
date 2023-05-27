@@ -13,7 +13,7 @@ struct Post: Identifiable, Hashable, Codable {
     let caption: String
     var likes: Int
     let imageUrl: String
-    let timestamp: Date
+    let date: Date
     var user: User? /// see why we do it later on
 }
 
@@ -25,7 +25,7 @@ extension Post {
             caption: "Winning without u.",
             likes: 1083793,
             imageUrl: "post_pic",
-            timestamp: .now,
+            date: .now,
             user: .MOCK_USERS[0]
         ),
         .init(
@@ -34,7 +34,7 @@ extension Post {
             caption: "Winning without u.",
             likes: 1083793,
             imageUrl: "post_pic",
-            timestamp: .now,
+            date: .now,
             user: .MOCK_USERS[0]
         ),
         .init(
@@ -43,7 +43,7 @@ extension Post {
             caption: "Winning without u.",
             likes: 1083793,
             imageUrl: "post_pic",
-            timestamp: .now,
+            date: .now,
             user: .MOCK_USERS[0]
         ),
         .init(
@@ -52,7 +52,7 @@ extension Post {
             caption: "Winning without u.",
             likes: 1083793,
             imageUrl: "post_pic",
-            timestamp: .now,
+            date: .now,
             user: .MOCK_USERS[0]
         ),
         .init(
@@ -61,7 +61,7 @@ extension Post {
             caption: "Soon out brothaz",
             likes: 1132980,
             imageUrl: "post_thugger",
-            timestamp: .now,
+            date: .now,
             user: .MOCK_USERS[1]
         ),
         .init(
@@ -70,7 +70,7 @@ extension Post {
             caption: "Im out... album on the way P #YSL",
             likes: 783917,
             imageUrl: "post_gunna",
-            timestamp: .now,
+            date: .now,
             user: .MOCK_USERS[4]
         )
     ]

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 enum ProfileImageSize {
     case small
@@ -23,31 +24,37 @@ enum ProfileImageSize {
 
 
 struct ProfileImage: View {
-    let profileImage: Image?
-    let profileImageString: String?
+    let image: Image?
+    let imageUrl: String?
     let size: ProfileImageSize
     
-    init(_ profileImage: Image?, size: ProfileImageSize) {
-        self.profileImage = profileImage
-        self.profileImageString = nil
+    init(_ image: Image?, size: ProfileImageSize) {
+        self.image = image
+        self.imageUrl = nil
         self.size = size
     }
     
-    init(_ profileImageString: String?, size: ProfileImageSize) {
-        self.profileImage = nil
-        self.profileImageString = profileImageString
+    init(_ imageUrl: String?, size: ProfileImageSize) {
+        self.image = nil
+        self.imageUrl = imageUrl
         self.size = size
     }
     
     var body: some View {
-        if let profileImage {
-            profileImage
+        if let imageUrl {
+            KFImage(URL(string: imageUrl))
+                .resizable()
+                .scaledToFill()
+                .frame(width: size.dimensions, height: size.dimensions)
+                .clipShape(Circle())
+        } else if let image {
+            image
                 .resizable()
                 .scaledToFill()
                 .frame(width: size.dimensions, height: size.dimensions)
                 .clipShape(Circle())
         } else {
-            Image(profileImageString ?? "Default_profile_pic")
+            Image("Default_profile_pic")
                 .resizable()
                 .scaledToFill()
                 .frame(width: size.dimensions, height: size.dimensions)

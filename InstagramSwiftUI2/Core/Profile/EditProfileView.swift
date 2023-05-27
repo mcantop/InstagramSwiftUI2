@@ -72,7 +72,11 @@ struct EditProfileView: View {
                         viewModel.presentingImagePicker.toggle()
                     } label: {
                         VStack(spacing: 16) {
-                            ProfileImage(viewModel.selectedImage, size: .large)
+                            if let selectedImage = viewModel.selectedImage {
+                                ProfileImage(selectedImage, size: .large)
+                            } else {
+                                ProfileImage(viewModel.user.profileImageUrl, size: .large)
+                            }
                             
                             Text("Edit profile picture")
                                 .font(.footnote)
@@ -140,11 +144,11 @@ struct EditProfileView: View {
     }
 }
 
-//struct EditProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditProfileView(User.MOCK_USERS.first!)
-//    }
-//}
+struct EditProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditProfileView(User.MOCK_USERS.first!)
+    }
+}
 
 private struct EditProfileTextField: View {
     let field: EditProfileField

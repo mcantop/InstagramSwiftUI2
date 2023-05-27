@@ -29,7 +29,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             email: "future@mail.com",
-            profileImageUrl: "profile_pic",
+            profileImageUrl: nil,
             username: "future",
             fullname: "FUTURE HNDRXX",
             pronouns: "he/him",
@@ -39,7 +39,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             email: "thugger@mail.com",
-            profileImageUrl: "thugger",
+            profileImageUrl: nil,
             username: "thuggerthugger1",
             fullname: "SEX!",
             bio: "Free Me"
@@ -47,7 +47,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             email: "carti@mail.com",
-            profileImageUrl: "carti",
+            profileImageUrl: nil,
             username: "playboicarti",
             fullname: "Carti",
             bio: "I been on opium for the last 10 days"
@@ -55,7 +55,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             email: "savage@mail.com",
-            profileImageUrl: "21savage",
+            profileImageUrl: nil,
             username: "youngsavage",
             fullname: "21 Savage",
             bio: "Young Savage why u trappin so hard, why u got 12 car garage, huh????"
@@ -63,7 +63,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             email: "gunna@mail.com",
-            profileImageUrl: "gunna",
+            profileImageUrl: nil,
             username: "gunna",
             fullname: "WUNNA",
             bio: "#YSL_THE_LABEL"
