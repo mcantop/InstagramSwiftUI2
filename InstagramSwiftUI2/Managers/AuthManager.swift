@@ -51,8 +51,7 @@ extension AuthManager {
     func loadUserdata() async throws {
         userSession = Auth.auth().currentUser
         guard let currentUid = userSession?.uid else { return }
-        let snapshot = try await Firestore.firestore().collection("users").document(currentUid).getDocument()
-        currentUser = try? snapshot.data(as: User.self) /// Decoding user, transforming from data dictionary to model
+        currentUser = try await UsersManager.fetchUser(uid: currentUid)
     }
     
     func signout() {

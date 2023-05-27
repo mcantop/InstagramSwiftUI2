@@ -49,6 +49,8 @@
 		5291BD7E2A1DAF69007976C1 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291BD7D2A1DAF69007976C1 /* SigninViewModel.swift */; };
 		52C48BB52A218F2100C42C09 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C48BB42A218F2100C42C09 /* ImageUploader.swift */; };
 		52C48BB82A21946C00C42C09 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 52C48BB72A21946C00C42C09 /* Kingfisher */; };
+		52C48BBA2A22226100C42C09 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C48BB92A22226100C42C09 /* FeedViewModel.swift */; };
+		52C48BBC2A222D1900C42C09 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C48BBB2A222D1900C42C09 /* ProfileViewModel.swift */; };
 		52D911C32A1D2B5E00172368 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D911C22A1D2B5E00172368 /* ProfileHeader.swift */; };
 		52D911C52A1D2B7300172368 /* ProfileSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D911C42A1D2B7300172368 /* ProfileSubheader.swift */; };
 		52D911C92A1D374300172368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D911C82A1D374300172368 /* GoogleService-Info.plist */; };
@@ -102,6 +104,8 @@
 		5291BD7B2A1DA5A7007976C1 /* RegistrationFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFlowViewModel.swift; sourceTree = "<group>"; };
 		5291BD7D2A1DAF69007976C1 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		52C48BB42A218F2100C42C09 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		52C48BB92A22226100C42C09 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		52C48BBB2A222D1900C42C09 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		52D911C22A1D2B5E00172368 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		52D911C42A1D2B7300172368 /* ProfileSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSubheader.swift; sourceTree = "<group>"; };
 		52D911C82A1D374300172368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 			children = (
 				526298712A0F2BA50078E3DA /* FeedView.swift */,
 				526298732A0F2BC90078E3DA /* FeedCell.swift */,
+				52C48BB92A22226100C42C09 /* FeedViewModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				5262986F2A0F21B10078E3DA /* ProfileView.swift */,
 				52D911C22A1D2B5E00172368 /* ProfileHeader.swift */,
 				52D911C42A1D2B7300172368 /* ProfileSubheader.swift */,
+				52C48BBB2A222D1900C42C09 /* ProfileViewModel.swift */,
 				5277BEAA2A2024E20026E43B /* EditProfileView.swift */,
 				52099A242A209A7F00048D01 /* EditProfileViewModel.swift */,
 			);
@@ -404,12 +410,14 @@
 				521D6D9F2A1A68D400365746 /* Int+Extension.swift in Sources */,
 				526298702A0F21B10078E3DA /* ProfileView.swift in Sources */,
 				5262988A2A0F4A390078E3DA /* SignupPasswordView.swift in Sources */,
+				52C48BBC2A222D1900C42C09 /* ProfileViewModel.swift in Sources */,
 				528806E72A1C4910006C3524 /* View+Extension.swift in Sources */,
 				5262987C2A0F36B50078E3DA /* SigninView.swift in Sources */,
 				526298882A0F486B0078E3DA /* SignupUsernameView.swift in Sources */,
 				526298562A0F1F4A0078E3DA /* ContentView.swift in Sources */,
 				521D6DA22A1A87DD00365746 /* PostsGridView.swift in Sources */,
 				528806E92A1C4B92006C3524 /* IGTabButton.swift in Sources */,
+				52C48BBA2A22226100C42C09 /* FeedViewModel.swift in Sources */,
 				5277BEAB2A2024E20026E43B /* EditProfileView.swift in Sources */,
 				526298762A0F33ED0078E3DA /* ExploreView.swift in Sources */,
 				528806E32A1C3CBF006C3524 /* AppManager.swift in Sources */,

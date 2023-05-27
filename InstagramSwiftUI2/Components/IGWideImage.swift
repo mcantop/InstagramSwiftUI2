@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct IGWideImage: View {
     let image: Image?
@@ -16,27 +17,29 @@ struct IGWideImage: View {
         self.imageString = nil
     }
     
-    init(_ image: String) {
-        self.imageString = image
+    init(_ imageString: String) {
+        self.imageString = imageString
         self.image = nil
     }
     
     var body: some View {
-        imageContent()
-            .resizable()
-            .frame(maxWidth: .infinity)
-            .scaledToFit()
-    }
-    
-    private func imageContent() -> Image {
-        if let image {
-            return image
-        } else if let imageString{
-            return Image(imageString)
-        } else {
-            return Image(systemName: "xmark")
+        if let imageString {
+            KFImage(URL(string: imageString))
+                .resizable()
+                .frame(maxWidth: .infinity)
+                .scaledToFit()
         }
     }
+    
+//    private func imageContent() -> Image {
+//        if let image {
+//            return image
+//        } else if let imageString{
+//            return KFImage(URL(string: imageString))
+//        } else {
+//            return Image(systemName: "xmark")
+//        }
+//    }
 }
 
 struct IGWideImage_Previews: PreviewProvider {
