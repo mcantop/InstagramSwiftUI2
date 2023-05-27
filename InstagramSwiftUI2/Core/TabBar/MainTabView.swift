@@ -12,7 +12,7 @@ struct MainTabView: View {
     @StateObject private var exploreViewModel = ExploreViewModel() /// Why is creating a stateobject inside navigationstack causing a double init of the state object?
     @State private var path = NavigationPath()
     let user: User
-    
+
     private var navigationTitle: String {
         return appManager.selectedTab.rawValue.capitalized
     }

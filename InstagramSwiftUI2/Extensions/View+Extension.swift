@@ -8,7 +8,6 @@
 import SwiftUI
 
 extension View {
-
     @ViewBuilder
     func searchable(
         if condition: Bool,
@@ -21,6 +20,19 @@ extension View {
                 text: text,
                 placement: placement,
                 prompt: prompt)
+        } else {
+            self
+        }
+    }
+    
+    @ViewBuilder
+    func navigationTitle(
+        if condition: Bool,
+        title: String
+    ) -> some View {
+        if condition {
+            self.navigationTitle(
+                title)
         } else {
             self
         }

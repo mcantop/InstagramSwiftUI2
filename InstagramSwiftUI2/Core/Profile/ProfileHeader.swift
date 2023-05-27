@@ -12,11 +12,7 @@ struct ProfileHeader: View {
     
     var body: some View {
         HStack {
-            Image(user.profileImageUrl ?? "Default_profile_pic")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 88, height: 88)
-                .clipShape(Circle())
+            ProfileImage(user.profileImageUrl, size: .large)
             
             Spacer(minLength: 0)
             

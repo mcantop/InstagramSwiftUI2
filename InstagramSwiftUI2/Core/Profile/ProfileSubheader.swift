@@ -12,15 +12,35 @@ struct ProfileSubheader: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            if let fullname = user.fullname {
-                Text(user.username).font(.headline)
+            HStack(spacing: 4) {
+                if let fullname = user.fullname {
+                    Text(fullname)
+                        .font(.headline)
+                }
+                
+                if let pronouns = user.pronouns {
+                    Text(pronouns)
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
             }
             
             if let bio = user.bio {
-                Text(bio).font(.subheadline)
+                Text(bio)
+                    .font(.subheadline)
             }
             
-            Text(user.username)
+            if let links = user.links {
+                HStack {
+                    Image(systemName: "link")
+                    
+                    Link(links, destination: URL(string: links)!)
+                }
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .foregroundColor(.blue)
+                .padding(.vertical, 4)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)

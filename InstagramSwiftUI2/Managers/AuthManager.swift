@@ -64,8 +64,9 @@ extension AuthManager {
 
 // MARK: - Private API
 private extension AuthManager {
+    @MainActor
     func uploadUserData(uid: String, username: String, email: String) async { /// That rarely ever goes wrong, you can just use async, no need for throws
-        let user = User(id: uid, username: username, email: email)
+        let user = User(id: uid, email: email, username: username)
         currentUser = user
         guard let encodedUser = try? Firestore.Encoder().encode(user) else { return } /// Encoding user, transforming from model to data dictionary
         try? await Firestore.firestore().collection("users").document(uid).setData(encodedUser)

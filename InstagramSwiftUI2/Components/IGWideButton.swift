@@ -14,8 +14,9 @@ enum WideButtonStyle {
 
 struct IGWideButton: View {
     // MARK: - Public Properties
-    let text: String
-    var style: WideButtonStyle
+    let text: String?
+    let isCurrentUser: Bool?
+    var style: WideButtonStyle?
     var destination: (any View)?
     let action: (() -> Void)?
     
@@ -32,18 +33,24 @@ struct IGWideButton: View {
         return isWhite ? .clear : .blue
     }
     
+    private var conditionalText: String {
+        return isCurrentUser == true ? "Edit Profile" : "Follow"
+    }
+    
     // MARK: - Action Init
-    init(_ text: String, style: WideButtonStyle, action: @escaping (() -> Void)) {
+    init(_ text: String? = nil, isCurrentUser: Bool? = nil, style: WideButtonStyle? = nil, action: @escaping (() -> Void)) {
         self.text = text
-        self.style = style
+        self.isCurrentUser = isCurrentUser
+        self.style = isCurrentUser == true ? .blackWhite : .blue
         self.destination = nil
         self.action = action
     }
     
     // MARK: - Destination Init
-    init(_ text: String, style: WideButtonStyle, destination: any View) {
+    init(_ text: String? = nil, isCurrentUser: Bool? = nil, style: WideButtonStyle? = nil, destination: any View) {
         self.text = text
-        self.style = style
+        self.isCurrentUser = isCurrentUser
+        self.style = isCurrentUser == true ? .blackWhite : .blue
         self.destination = destination
         self.action = nil
     }
@@ -64,7 +71,7 @@ struct IGWideButton: View {
     
     // MARK: - Button Label
     var buttonLabel: some View {
-        Text(text)
+        Text(text ?? conditionalText)
             .foregroundColor(buttonForegroundColor)
             .bold()
             .padding(12)

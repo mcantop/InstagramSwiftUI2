@@ -18,11 +18,7 @@ struct UserCell: View {
     
     var body: some View {
         HStack(spacing: 8) {
-            Image(user.profileImageUrl ?? "Default_profile_pic")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 44, height: 44)
-                .clipShape(Circle())
+            ProfileImage(user.profileImageUrl, size: .small)
             
             VStack(alignment: .leading) {
                 Text(user.username)

@@ -30,6 +30,7 @@ struct ExploreView: View {
         )
         .navigationDestination(for: User.self) { user in
             ProfileView(user: user)
+                .navigationTitle(user.username)
         }
     }
 }

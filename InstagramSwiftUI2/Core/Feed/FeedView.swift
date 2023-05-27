@@ -15,7 +15,7 @@ struct FeedView: View {
                     FeedCell(post: post)
                 }
             }
-            .padding(.top)
+            .padding(.top, 8)
         }
     }
 }

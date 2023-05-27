@@ -6,57 +6,67 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 struct User: Identifiable, Codable, Hashable {
     let id: String
-    var username: String
-    var profileImageUrl: String?
-    var fullname: String?
-    var bio: String?
     let email: String
+    var profileImageUrl: String?
+    var username: String
+    var fullname: String?
+    var pronouns: String?
+    var bio: String?
+    var links: String?
+    var gender: Int?
+    
+    var isCurrentUser: Bool {
+        return id == Auth.auth().currentUser?.uid
+    }
 }
 
 extension User {
     static var MOCK_USERS: [User] = [
         .init(
             id: UUID().uuidString,
-            username: "future",
+            email: "future@mail.com",
             profileImageUrl: "profile_pic",
+            username: "future",
             fullname: "FUTURE HNDRXX",
+            pronouns: "he/him",
             bio: "I Never Liked You",
-            email: "future@mail.com"
+            links: "https://futureofficial.shop"
         ),
         .init(
             id: UUID().uuidString,
-            username: "thuggerthugger1",
+            email: "thugger@mail.com",
             profileImageUrl: "thugger",
+            username: "thuggerthugger1",
             fullname: "SEX!",
-            bio: "Free Me",
-            email: "thugger@mail.com"
+            bio: "Free Me"
         ),
         .init(
             id: UUID().uuidString,
-            username: "playboicarti",
+            email: "carti@mail.com",
             profileImageUrl: "carti",
+            username: "playboicarti",
             fullname: "Carti",
-            bio: "I been on opium for the last 10 days",
-            email: "carti@mail.com"
+            bio: "I been on opium for the last 10 days"
         ),
         .init(
             id: UUID().uuidString,
-            username: "youngsavage",
+            email: "savage@mail.com",
             profileImageUrl: "21savage",
+            username: "youngsavage",
             fullname: "21 Savage",
-            bio: "Young Savage why u trappin so hard, why u got 12 car garage, huh????",
-            email: "savage@mail.com"
+            bio: "Young Savage why u trappin so hard, why u got 12 car garage, huh????"
         ),
         .init(
             id: UUID().uuidString,
-            username: "gunna",
+            email: "gunna@mail.com",
             profileImageUrl: "gunna",
+            username: "gunna",
             fullname: "WUNNA",
-            bio: "#YSL_THE_LABEL",
-            email: "gunna@mail.com"
+            bio: "#YSL_THE_LABEL"
         )
     ]
 }

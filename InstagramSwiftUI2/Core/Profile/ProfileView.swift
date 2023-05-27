@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var appManager: AppManager
+    @State private var presentingEditProfile = false
     let user: User
-    
+
     private var userPosts: [Post] {
         return Post.MOCK_POSTS.filter({ $0.user?.username == user.username })
     }
@@ -17,15 +19,20 @@ struct ProfileView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                Spacer(minLength: 0)
+                
                 ProfileHeader(user: user)
                 
                 ProfileSubheader(user: user)
                 
                 IGWideButton(
-                    "Edit Profile",
-                    style: .blackWhite
+                    isCurrentUser: user.isCurrentUser
                 ) {
-                    
+                    if user.isCurrentUser {
+                        presentingEditProfile.toggle()
+                    } else {
+                        
+                    }
                 }
                 .padding(.horizontal)
                 
@@ -34,12 +41,21 @@ struct ProfileView: View {
                 Spacer()
             }
         }
-        .padding(.top)
+        .navigationTitle(
+            if: appManager.selectedTab == .profile,
+            title: "My Profile"
+        )
+        .fullScreenCover(isPresented: $presentingEditProfile) {
+            EditProfileView(user)
+        }
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(user: User.MOCK_USERS.first!)
+        NavigationStack {
+            ProfileView(user: User.MOCK_USERS.first!)
+                .environmentObject(AppManager())
+        }
     }
 }
