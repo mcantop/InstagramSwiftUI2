@@ -49,6 +49,6 @@ struct ProfileSubheader: View {
 
 struct ProfileSubheader_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeader(user: User.MOCK_USERS.first!)
+        ProfileHeader(user: User.MOCK_USERS.first!, postsCount: 3)
     }
 }

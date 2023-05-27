@@ -50,6 +50,11 @@ struct MainTabView: View {
                     }
                 }
             }
+            // MARK: - User Profile Navigation
+            .navigationDestination(for: User.self) { user in
+                ProfileView(user: user)
+                    .navigationTitle(user.username)
+            }
         }
     }
     

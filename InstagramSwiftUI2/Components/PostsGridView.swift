@@ -8,6 +8,7 @@
 // https://stackoverflow.com/questions/62791912/how-do-you-clip-an-image-to-a-square-inside-a-lazy-grid-swiftui
 
 import SwiftUI
+import Kingfisher
 
 struct PostsGridView: View {
     let posts: [Post]
@@ -23,7 +24,7 @@ struct PostsGridView: View {
                 Rectangle()
                     .aspectRatio(1, contentMode: .fill)
                     .overlay {
-                        Image(post.imageUrl)
+                        KFImage(URL(string: post.imageUrl))
                             .resizable()
                             .scaledToFill()
                     }

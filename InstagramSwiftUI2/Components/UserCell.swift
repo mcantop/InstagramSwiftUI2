@@ -17,22 +17,24 @@ struct UserCell: View {
     }
     
     var body: some View {
-        HStack(spacing: 8) {
-            ProfileImage(user.profileImageUrl, size: .small)
-            
-            VStack(alignment: .leading) {
-                Text(user.username)
-                    .font(.headline)
+        NavigationLink(value: user) {
+            HStack(spacing: 8) {
+                ProfileImage(user.profileImageUrl, size: .small)
                 
-                if let fullname = user.fullname, showFullName {
-                    Text(fullname)
-                        .font(.subheadline)
+                VStack(alignment: .leading) {
+                    Text(user.username)
+                        .font(.headline)
+                    
+                    if let fullname = user.fullname, showFullName {
+                        Text(fullname)
+                            .font(.subheadline)
+                    }
                 }
+                
+                Spacer()
             }
-            
-            Spacer()
+            .padding(.horizontal, 8)
         }
-        .padding(.horizontal, 8)
     }
 }
 

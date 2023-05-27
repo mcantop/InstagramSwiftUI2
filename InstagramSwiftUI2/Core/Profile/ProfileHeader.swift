@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileHeader: View {
     let user: User
+    let postsCount: Int
     
     var body: some View {
         HStack {
@@ -16,7 +17,7 @@ struct ProfileHeader: View {
             
             Spacer(minLength: 0)
             
-            ProfileStats(name: "Posts", amount: 3)
+            ProfileStats(name: "Posts", amount: postsCount)
             
             Spacer(minLength: 0)
             
@@ -32,7 +33,7 @@ struct ProfileHeader: View {
 
 struct ProfileHeader_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeader(user: User.MOCK_USERS.first!)
+        ProfileHeader(user: User.MOCK_USERS.first!, postsCount: 3)
     }
 }
 

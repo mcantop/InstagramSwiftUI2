@@ -16,9 +16,7 @@ struct ExploreView: View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(viewModel.users) { user in
-                    NavigationLink(value: user) {
-                        UserCell(user, showFullName: true)
-                    }
+                    UserCell(user, showFullName: true)
                 }
             }
             .padding(.top)
@@ -28,10 +26,6 @@ struct ExploreView: View {
             text: $searchQuery,
             prompt: "Search for users..."
         )
-        .navigationDestination(for: User.self) { user in
-            ProfileView(user: user)
-                .navigationTitle(user.username)
-        }
     }
 }
 

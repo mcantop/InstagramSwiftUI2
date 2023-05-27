@@ -9,11 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var appManager: AppManager
-    @State private var presentingEditProfile = false
-    let user: User
-
-    private var userPosts: [Post] {
-        return Post.MOCK_POSTS.filter({ $0.user?.username == user.username })
+    @StateObject private var viewModel: ProfileViewModel
+    
+    init(user: User) {
+        _viewModel = StateObject(wrappedValue: ProfileViewModel(user: user))
     }
     
     var body: some View {
@@ -21,22 +20,22 @@ struct ProfileView: View {
             VStack(spacing: 16) {
                 Spacer(minLength: 0)
                 
-                ProfileHeader(user: user)
+                ProfileHeader(user: viewModel.user, postsCount: viewModel.posts.count)
                 
-                ProfileSubheader(user: user)
+                ProfileSubheader(user: viewModel.user)
                 
                 IGWideButton(
-                    isCurrentUser: user.isCurrentUser
+                    isCurrentUser: viewModel.user.isCurrentUser
                 ) {
-                    if user.isCurrentUser {
-                        presentingEditProfile.toggle()
+                    if viewModel.user.isCurrentUser {
+                        viewModel.presentingEditProfile.toggle()
                     } else {
                         
                     }
                 }
                 .padding(.horizontal)
                 
-                PostsGridView(userPosts)
+                PostsGridView(viewModel.posts)
                 
                 Spacer()
             }
@@ -45,9 +44,10 @@ struct ProfileView: View {
             if: appManager.selectedTab == .profile,
             title: "My Profile"
         )
-        .fullScreenCover(isPresented: $presentingEditProfile) {
-            EditProfileView(user)
+        .fullScreenCover(isPresented: $viewModel.presentingEditProfile) {
+            EditProfileView(viewModel.user)
         }
+        .animation(.spring(), value: viewModel.posts)
     }
 }
 
